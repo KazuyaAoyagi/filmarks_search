@@ -7,8 +7,10 @@ var archiver = require('archiver')
 
 const extPackageJson = require('../package.json')
 
-const DEST_DIR = path.join(__dirname, '../dist')
-const DEST_ZIP_DIR = path.join(__dirname, '../dist-zip')
+const DEST_DIR = path.join(__dirname, 
+'../dist')
+const DEST_ZIP_DIR = path.join(__dirname, 
+'../dist-zip')
 
 const extractExtensionData = () => ({
   name: extPackageJson.name,
@@ -21,23 +23,30 @@ const makeDestZipDirIfNotExists = () => {
   }
 }
 
-const buildZip = (src, dist, zipFilename) => {
+const buildZip = (src, 
+dist, 
+zipFilename) => {
   console.info(`Building ${zipFilename}...`)
 
-  const output = fs.createWriteStream(path.join(dist, zipFilename))
+  const output = fs.createWriteStream(path.join(dist, 
+zipFilename))
   const archive = archiver('zip')
   archive.pipe(output)
-  archive.directory(src, false)
+  archive.directory(src, 
+false)
   archive.finalize()
 }
 
 const main = () => {
-  const { name, version } = extractExtensionData()
+  const { name, 
+version } = extractExtensionData()
   const zipFilename = `${name}-v${version}.zip`
 
   makeDestZipDirIfNotExists()
 
-  buildZip(DEST_DIR, DEST_ZIP_DIR, zipFilename)
+  buildZip(DEST_DIR, 
+DEST_ZIP_DIR, 
+zipFilename)
 }
 
 main()

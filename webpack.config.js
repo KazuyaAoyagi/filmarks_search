@@ -14,7 +14,8 @@ const isDevMode = process.env.NODE_ENV === 'development'
 
 const config = {
   devtool: isDevMode ? 'eval-source-map' : false,
-  context: path.resolve(__dirname, './src'),
+  context: path.resolve(__dirname, 
+'./src'),
   entry: {
     options: './options/index.js',
     popup: './popup/index.js',
@@ -22,7 +23,8 @@ const config = {
     contentScripts: './contentScripts/index.js',
   },
   output: {
-    path: path.resolve(__dirname, './dist'),
+    path: path.resolve(__dirname, 
+'./dist'),
     publicPath: '.',
     filename: '[name].js',
   },
@@ -91,8 +93,11 @@ const config = {
     new VueLoaderPlugin(),
     new CleanWebpackPlugin(),
     new CopyWebpackPlugin([
-      { from: 'assets', to: 'assets' },
-      { from: 'manifest.json', to: 'manifest.json', flatten: true },
+      { from: 'assets', 
+to: 'assets' },
+      { from: 'manifest.json', 
+to: 'manifest.json', 
+flatten: true },
     ]),
     new HtmlWebpackPlugin({
       title: 'Options',
@@ -134,15 +139,18 @@ if (isDevMode) {
       filename: '[name].css',
     }),
     new PurgecssPlugin({
-      paths: fg.sync([`./src/**/*`], {
+      paths: fg.sync([`./src/**/*`], 
+{
         onlyFiles: true,
         absolute: true,
       }),
     })
     // new CopyWebpackPlugin([
     //   {
-    //     from: path.join(__dirname, '../src/data'),
-    //     to: path.join(__dirname, '../dist/data'),
+    //     from: path.join(__dirname, 
+'../src/data'),
+    //     to: path.join(__dirname, 
+'../dist/data'),
     //   },
     // ])
   )
