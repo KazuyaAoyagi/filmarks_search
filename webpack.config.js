@@ -148,9 +148,9 @@ if (isDevMode) {
     // new CopyWebpackPlugin([
     //   {
     //     from: path.join(__dirname, 
-'../src/data'),
+    //'../src/data'),
     //     to: path.join(__dirname, 
-'../dist/data'),
+    //'../dist/data'),
     //   },
     // ])
   )
