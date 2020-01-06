@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <h2>Movie Score Search</h2>
+    <h2>FilSearch</h2>
     
     <div class="seach-form" :class="{'sticky': position > 35}">
       <input class="search-input" type="text" autofocus v-model="searchtext" placeholder="検索したい作品名を入力してください" />
@@ -18,7 +18,7 @@
             <img :src="item.image" width="40" height="40"/>
           </div>
           <div>
-            <p>{{ item.name }}</p>
+            <p><a :href="'https://filmarks.com/' + item.link" target="_blank">{{item.name }}</a></p>
             <p>{{ item.score }}</p>
           </div>
         </li>
@@ -93,13 +93,23 @@ export default {
         $(html).each((index, 
 element) => {
           //console.log($(element).find('.p-movie-cassette__other-info').text());
+          //console.log(element);
+
+          let str = ""
+          $(element).find('.p-movie-cassette__readmore')[0].href.split('/').slice(3).forEach(v => {
+            str += '/' + v
+          })
+          
           
           let data = {
             name:element.getElementsByTagName("h3")[0].innerText ? element.getElementsByTagName("h3")[0].innerText:'',
             score:element.getElementsByClassName("c-rating__score")[0].innerText ? element.getElementsByClassName("c-rating__score")[0].innerText:'',
             image:$(element).find('.p-movie-cassette__jacket img')[0]['src'],
+            link:str,
           }
+
           //console.log(data);
+          
           
           vm.result.push(data)
         })

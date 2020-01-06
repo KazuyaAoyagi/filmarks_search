@@ -14,7 +14,7 @@
       "run_at": "document_end"
     }
   ],
-  "description": "vue-chrome-extension-boilerplate",
+  "description": "Filmarksから気になる映画やドラマのスコアを検索",
   "icons": {
     "16": "assets/icons/icon_16.png",
     "32": "assets/icons/icon_32.png",
@@ -22,7 +22,7 @@
     "128": "assets/icons/icon_128.png"
   },
   "manifest_version": 2,
-  "name": "vue-chrome-extension-boilerplate",
+  "name": "FilSearch",
   "options_ui": {
     "chrome_style": false,
     "page": "./options.html"
